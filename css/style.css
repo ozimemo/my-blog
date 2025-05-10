@@ -1,0 +1,32 @@
+
+
+body {
+    font-family: sans-serif;
+    background-color: #f9f9f9;
+    padding: 20px;
+  }
+  h1 {
+    color: #333;
+  }
+  .post-list li {
+    margin: 10px 0;
+  }
+  a {
+    color: blue;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  a:hover {
+    color: darkorange;
+    text-decoration: underline;
+  }
+  .category{
+    font-size: 0.9em;
+    color:#666;
+    margin-bottom: 1em;
+  }
+  .category a {
+    color: #0066cc;
+    text-decoration: none;
+  }

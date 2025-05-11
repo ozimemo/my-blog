@@ -14,45 +14,45 @@
     恐らくほとんどの人は躓かないポイントなので寄り道編としました。</p>
     <p>まず今のフォルダ内がどうなっているかというと</p>
 
-    <img src="../images/X1/folder.png" width="400">
+    <img src="../images/ex1/folder.png" width="400">
 
     <p>めっっっっちゃくちゃ。<br>
     index.htmlやstyle.cssはもちろん、画像や記事ファイルまで一緒になってぐちゃぐちゃなのでフォルダに格納したいです。</p>
     <p>早速Chat GPTに現在の状況を画像で報告。フォルダを整理したいと伝えました。</p>
 
-    <img src="../images/X1/gpt6.png" width="400">
+    <img src="../images/ex1/gpt6.png" width="400">
 
     <p>すると画像からファイル名を種類を読み取り、フォルダ階層の提案までしてくれました。<br>
     提案通りにフォルダを設置し、ファイルを振り分けました。</p>
 
-    <img src="../images/X1/kekka5.png" width="400">
+    <img src="../images/ex1/kekka5.png" width="400">
 
     <p>記事内で使用していた画像の場所が変わったので、各記事の画像指定コードも変更する必要があるようです。</p>
 
-    <img src="../images/X1/gpt7.png" width="400">
+    <img src="../images/ex1/gpt7.png" width="400">
     
     <p>上の階層であるmy-blog内のフォルダを参照しているみたいですが、現在編集している記事のHTMLファイルはpostsフォルダの中にあります。<br>
     なんかうまくいかなそうですがやってみましょう！</p>
 
     <p>VSCに置き換え機能があるのでそちらを利用します。</p>
 
-    <img src="../images/X1/vsc1.png" width="400">
+    <img src="../images/ex1/vsc1.png" width="400">
 
     <p>上のメニューからEdit内のReplace on Filesをクリック。</p>
 
-    <img src="../images/X1/vsc3.png" width="400">
+    <img src="../images/ex1/vsc3.png" width="400">
 
     <p>するとこのような画面が出てくるので、src="と入力。<br>
     VSCで開いているフォルダ内全てに検索がかかっているようなので、post1.html以外を、ファイル名右の×ボタンで対象から外します。</p>
 
-    <img src="../images/X1/vsc4.png" width="400">
+    <img src="../images/ex1/vsc4.png" width="400">
 
     <p>外したら置き換え欄にGPTの指示通りになるよう入力して置き換えます。</p>
     <p>するとどうでしょう。見事に表示されません。Chat GPTにフォルダ階層とコードを貼り付けて質問してみます。<br>
     見切れていますが画像外上にはフォルダの階層がずらーっと書かれています。<br>
     階層を伝えるときにフォルダ階層の取得のしかたもChat GPTに教えてもらったので別記事で書きます。</p>
 
-    <img src="../images/X1/gpt8.png" width="400">
+    <img src="../images/ex1/gpt8.png" width="400">
 
     <p>my-blog内のHTMLファイルでコードを書いていると認識していたみたいです。そらそうか。<br>
     コードからpost1.htmlでコードを書いていることを汲み取ってくれて、解説と修正方法も出してくれました。<br>
@@ -60,29 +60,29 @@
     早速修正しましょう。<br>
     post1.htmlだけ変更したので今回の修正もpost1.htmlだけになるようにします。</p>
 
-    <img src="../images/X1/vsc5.png" width="400">
+    <img src="../images/ex1/vsc5.png" width="400">
 
     <p>imagesの手前に../を追加します。</p>
     <p>あとは記事ごとに修正したファイルパスを置き換えて終わり。</p>
 
-    <img src="../images/X1/vsc6.png" width="400">
+    <img src="../images/ex1/vsc6.png" width="400">
 
     <p>ついでにCSSファイルの指定も修正しましょう！<br>
     CSSファイルはあまりいじっていないので変化がわかりにくいです。<br>
     リンクにマウスカーソルを合わせるとオレンジ色になるはずなのでそれで確認します。</p>
 
-    <img src="../images/X1/blog2.png" width="400">
+    <img src="../images/ex1/blog2.png" width="400">
 
     <p>青！！適用されてませんね！！！修正しましょう。</p>
     <p>まずは置き換えを開いて、CSSファイルをしているコードをコピーして検索します。</p>
 
-    <img src="../images/X1/vsc7.png" width="400">
+    <img src="../images/ex1/vsc7.png" width="400">
 
     <p>するとすべてのHTMLファイルがリストにでてきますので、ここで修正版のコードを打ち込みます。<br>
     変更前と変更後が色分けされていて、一文全て表示されるので分かりやすいですね！</p>
     <p>早速確認してみましょう。</p>
 
-    <img src="../images/X1/blog3.png" width="400">
+    <img src="../images/ex1/blog3.png" width="400">
 
     <p>オレンジ！！！無事適用されました！！！<br>
     これにてフォルダ整理を終わります。</p>

@@ -30,3 +30,22 @@ body {
     color: #0066cc;
     text-decoration: none;
   }
+  .post-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2em;
+  padding-top: 1em;
+  border-top: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.post-nav a {
+  color: #007acc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.post-nav a:hover {
+  color: #005a99;
+}

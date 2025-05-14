@@ -1,0 +1,84 @@
+<p class="category">カテゴリ：<a href="../category/blog2.html">ブログ作成～公開後～</a></p>
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="記事の下部に前の記事へと次の記事へを表示してブログの回遊性を上げよう！">
+        <meta name="robots" content="index, follow">
+        <title>ブログの回遊性を上げよう！</title>
+        <link rel="stylesheet" href="../css/style.css">
+    <body>
+        <h1>ブログ作成 第9回 ブログの回遊性を上げよう！</h1>
+        <p>投稿日：2025年5月14日</p>
+        
+        <p><a href="post8.html">前回</a>Google Search Consoleに登録しまして、大体3日ぐらいで検索にヒットするようになりました！</p>
+
+        <img src="../images/post9/01.png" width="400">
+
+        <p>っしゃーーーーーーー！！！！！！！<br>
+        これでブログを見てくれる可能性が上がったので、見やすいブログに整えていきましょう！！</p>
+        <p>そんなわけで第9回となる今回は、ブログの一番下に前の記事と次の記事のリンクを貼って、記事を見てくれた方が他の記事を見やすいようにしていきましょー！！</p>
+        <p>早速マイブラザーChat GPTに聞いてみます！！</p>
+
+        <img src="../images/post9/02.png" width="400">
+
+        <p>なるほど！リンクを貼ればいいだけかと思っていましたが、&lt;div class>を設定することでこの部分だけスタイルを変えるように設定するみたいです！<br>
+        ちなみに&lt;hr>タグは、水平線(horizontal rule)を表示するHTMLタグのようです！
+        第3回の記事での例なのでまずはpost3.htmlにコードを入力します。</p>
+
+        <img src="../images/post9/03.png" width="400">
+
+        <p>今までカテゴリや、ブログ一覧に戻るを表示していた箇所に表示します。<br>
+        するとどうでしょう。</p>
+
+        <img src="../images/post9/04.png" width="400">
+
+        <p>いいかんじ！！！！！これでブログが見やすくなるといいなー！！</p>
+        <p>お次はCSSでスタイルを変えていきましょー！！</p>
+
+        <img src="../images/post9/05.png" width="400">
+
+        <p>な、なるほどー！？！？知らないコードが冒頭にありますね！<br>
+        Chat GPTが解説してくれていますが、それぞれの意味を聞いてみました！</p>
+
+        <img src="../images/post9/06.png" width="400">
+
+        <p>displayとは、その要素のレイアウトを決めるプロパティのようです。<br>
+        今回は要素を横並びにするため、フレックスコンテナとして表示するflex値を使うようです。</p>
+
+        <img src="../images/post9/07.png" width="400">
+
+        <p>justify-contentとは、上で指定したフレックスボックスの中で、子要素をどう配置するかを決めるプロパティのようです。<br>
+        今回は両端に寄せて間を均等に空けたいので、space-betweenという値を使うようです。<br>
+        他にも左寄せや真ん中寄席などがありますね！</p>
+
+        <p>次はalian-itemsの意味を聞きます。</p>
+
+        <img src="../images/post9/08.png" width="400">
+
+        <p>display:flexで横並びにした要素の縦方向の揃え方をコントロールするプロパティのようです！</p>
+        <p>これでコードに含まれているプロパティは大体わかったので、style.cssにコードを入力します！</p>
+
+        <img src="../images/post9/09.png" width="400">
+
+        <p>これを適用すると～～～？</p>
+
+        <img src="../images/post9/10.png" width="400">
+
+        <p>ででん！！！無事適用されました～～～！！！<br>
+        HTML内の&lt;hr>タグと、CSS内のborderプロパティで2本の線が表示されていますが、片方でいいかなｗ<br>
+        &lt;hr>タグを消します。
+        </p>
+
+        <img src="../images/post9/11.png" width="400">
+
+        <p>うん！いいかんじ！！！あとは他の記事にも適用して今回は終了です！！！</p>
+
+        <div class="post-nav">
+        <a href="post8.html">← 第8回 Google検索でヒットするようにする。</a>
+        </div>
+        <p class="category">カテゴリ：<a href="../category/blog2.html">ブログ作成～公開後～</a></p>
+        <p><a href="../index.html">←ブログ一覧に戻る</a></p>
+    </body>
+    </head>
+</html>

@@ -1,0 +1,81 @@
+<p class="category">カテゴリ：<a href="../category/blog2.html">ブログ作成～公開後～</a></p>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="JavaScripstを使用して、別ページに作成した履歴から最新5件をトップページに表示します。">
+    <meta name="robots" content="index, follow">
+    <title>更新履歴を表示しよう！～JavaScriptを添えて～</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>第10回 更新履歴を表示しよう！～JavaScriptを添えて～</h1>
+    <p>投稿日：2025年5月17日</p>
+
+    <p>10回目となる今回はトップページに更新履歴を表示します！<br>
+    ブログの変化の過程を楽しんでもらいたいのですが、どこが変わったのかわからなかったら意味ないですよね！<br>
+    別ページに更新履歴をリスト化し、トップページには最新5件と過去履歴へのリンクを表示させたいです。<br>
+    ということで早速Chat GPTに聞いてみます！</p>
+
+    <img src="../images/post010/01.png" width="400">
+
+    <p>方法1は最新5件をその都度変え、index.htmlとhistory.htmlをそれぞれ更新する必要がありそうです。</p>
+
+    <img src="../images/post010/02.png" width="400">
+
+    <p>方法2はJavaScriptを使用してhistry.htmlの更新履歴の最新5件を自動的に取得してindex.htmlに表示してくれるみたいです。</p>
+    <p>JacaScriptを使うのは初めてですが、せっかくなので方法2で挑戦してみましょう！</p>
+
+    <img src="../images/post010/03.png" width="400">
+
+    <p>JavaScriptも初心者ということを伝えると、メモリが更新されましたね！</p>
+
+    <img src="../images/post010/04.png" width="400">
+
+    <p>ステップ1　まずは更新履歴のページを作成します。<br>
+    方法を提案してくれた段階ではhistory.htmlとなっていましたが、案を決定したあとはupdate-log.htmlを作るようにとなっています。<br>
+    このように提案段階と実施段階でやり方が変わる場合があるので、実際に作業を始めるのは案を決定してからのほうがいいですね！</p>
+    <p>まずはupdate-log.htmlを作成し、そこに更新履歴をリスト化します。</p>
+
+    <img src="../images/post010/05.png" width="400">
+
+    <p>階層の指示はなかったのでindex.htmlと同じ階層に作成しました。<br>
+    更新履歴にall-apdatesというidを設定し、それを指定することで読み込めるようにするみたいです。</p>
+
+    <img src="../images/post010/06.png" width="400">
+
+    <p>ステップ2　トップページに読み込む場所を作ります。</p>
+
+    <img src="../images/post010/07.png" width="400">
+
+    <p>ページ内の一番上に表示するようにしました。</p>
+
+    <img src="../images/post010/08.png" width="400">
+
+    <p>ステップ3　JavaScriptを追加します。<br>
+    お～～～。まったくわからねぇ～～～。でも初心者向けの解説をしてくれてますね！<br>
+    ひとつずつ解読していきましょう。</p>
+
+    <ul>
+        <li>fetch(...)：指定したファイルを取りに行きます。<br>
+        ここではapdate-log.htmlを取りに行きます。</li>
+        <li>.then(response => response.text())：取りに行ったデータをテキストとして読み込みます。</li>
+        <li>DOMParser：読み込んだテキスト(HTML)を、ブラウザが「HTMLの構造」として扱えるように変換します。</li>
+        <li>queryselectAll('li')：リスト(&ltli>)を全部取ってきます。</li>
+        <li>cloneNode(true)：取得したリストの内容をコピーして、今のページに貼り付けます。</li>
+    </ul>
+
+    <p>なるほど。大まかな動きはわかりましたが、そもそも.thenって何ですか？っていう段階なので、聞いてみます。</p>
+
+    <img src="../images/post010/09.png" width="400">
+
+    
+    
+
+    <div class="post-nav">
+       <a href="post009.html">← 第9回 ブログの回遊性を上げよう！</a>
+    </div>
+    <p class="category">カテゴリ：<a href="../category/blog2.html">ブログ作成～公開後～</a></p>
+<p><a href="../index.html">←ブログ一覧に戻る</a></p>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<p class="category">カテゴリ:<a href="../category/blog1.html">ブログ作成～公開まで～</a></p>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="第5回はブログの記事にカテゴリを設定して整理整頓！記事数が少ない今こそ準備するチャンス。いつも通りChat GPTの力を借りて進めます。">
+    <meta name="robots" content="index, follow">
+    <title>カテゴリを設定しよう！</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>ブログ作成 その5 カテゴリを設定しよう！</h1>
+    <p>投稿日：2025年5月10日</p>
+
+    <p>さてさて第5回。ブログもそれっぽくなってきた今日このごろ。</p>
+
+    <p>今回は「カテゴリ」を設定して、記事を見やすく整理していきます！</p>
+
+    <p>…と言っても、まだ記事数は片手で足りちゃうくらい。でも未来の私が「過去の私グッジョブ！」って思ってくれるはず。</p>
+
+    <p>ということで、恒例の“とりあえずChat GPTに聞いてみよう”タイム、始まります。</p>
+
+    <img src="../images/post005/1.png" width="400">
+
+    <p>各記事の上部にカテゴリのクラスを設定するようです。</p>
+
+    <img src="../images/post005/3.png" width="400">
+
+    <p>試しにpost001に設定します。ブログ作成～公開まで～　にしておきます！</p>
+
+    <img src="../images/post005/4.png" width="400">
+
+    <p>次はcategoryフォルダを作り、カテゴリごとにHTMLファイルを作るみたいです。</p>
+
+    <img src="../images/post005/5.png" width="400">
+
+    <p>カテゴリフォルダを作成し、その中にHTMLファイルを作成。<br>
+    そのファイルの中にコードを打ち込み、リストを作りました。</p>
+    <p>カテゴリのHTMLファイルを開いてみましょう！</p>
+
+    <img src="../images/post005/6.png" width="400">
+
+    <p>おお！！！いいかんじ！！！<br>
+    今はHTML全体に設定しているCSSスタイルが適用されていますが、</p>
+
+    <img src="../images/post005/7.png" width="400">
+
+    <p>Chat GPTがカテゴリへのCSS適用を任意で提案してくれているのでやってみましょう！</p>
+    <p>style.cssにコードを打ち込んでみます。</p>
+
+    <img src="../images/post005/8.png" width="400">
+
+    <p>するとどうでしょう。</p>
+
+    <img src="../images/post005/9.png" width="400">
+
+    <p>うおおお！！ページ上部にカテゴリが表示されました！</p>
+    <p>ついでにトップページにもカテゴリを表示します。index.htmlを開いて</p>
+
+    <img src="../images/post005/10.png" width="400">
+
+    <p>カテゴリ一覧のリストを作成。ついでに記事一覧のリストも作成し、今までの記事のリンクを貼りました。<br>
+    index.htmlを開いてみます。</p>
+
+    <img src="../images/post005/11.png" width="400">
+
+    <p>なんかブログの一番下の部分、こんな感じですね！<br>
+    うまくいったので置き換えを使って他のページにも適用します。</p>
+
+    <img src="../images/post005/12.png" width="400">
+
+    <p>&lt;!DOCTYPE>を検索して、置き換え後をカテゴリ設定するタグにして、最後に&lt;!DOCTYPE>も含めれば文頭に追加できます！</p>
+    <p>無事カテゴリを設定できたので今回はここまで！</p>
+
+    <div class="post-nav">
+        <a href="ex002.html">← 寄り道2 フォルダ階層を取得する。</a>
+        ｜
+        <a href="post006.html">第6回 ブログを公開しよう！→</a>
+    </div>
+    <p class="category">カテゴリ:<a href="../category/blog1.html">ブログ作成～公開まで～</a></p>
+    <p><a href="../index.html">←ブログ一覧に戻る</a></p>
+</body>
+</html>

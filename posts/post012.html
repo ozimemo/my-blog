@@ -1,0 +1,173 @@
+<p class="category">カテゴリ：<a href="../category/blog2.html">ブログ作成～公開後～</a></p>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BHFL8B352X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-BHFL8B352X');
+  </script>
+    <meta charset="UTF-8">
+    <meta name="description" content="CSSを編集してページ全体のレイアウトを整える方法をChat GPTに聞きながら実践します！">
+    <meta name="robots" content="index, follow">
+    <title>CSSでページ全体のレイアウトを整えよう！</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>第12回 CSSでページ全体を整えよう！</h1>
+    <p>投稿日：2025年5月20日</p>
+
+    <p>12回目となる今回は、いよいよページ全体のレイアウトを整えていきます！！<br>
+    現在のレイアウトはこんな感じ。</p>
+
+    <img src="../images/post012/01.png" width="400">
+
+    <p>・・・はい・・・。殺風景ですねぇ。。。いかにも文字を羅列しただけのような見た目。<br>
+    こんなんじゃ来てくれた方も即戻るボタンを押すことでしょう！<br>
+    とは言ったもののなにをどうしたらいいのかまったくわからないのでChat GPTに聞いてみましょう！</p>
+
+    <img src="../images/post012/02.png" width="400">
+
+    <p>まずはどこを整えたいか決めましょう！ここでスターターコードというコード例を出してくれているのですが、
+        話を進めていくと変わる可能性があるのでここではブログ全体のレイアウトをオシャレにするという方向で話を進めます。
+    </p>
+
+    <img src="../images/post012/03.png" width="400">
+
+    <p>すると大まかなイメージを文章化して伝えてくれて、実際のコードも出してくれます。</p>
+
+    <img src="../images/post012/04.png" width="400">
+    <img src="../images/post012/05.png" width="400">
+    <img src="../images/post012/06.png" width="400">
+
+    <p>変化後を見てからのほうがコードがわかりやすいと思うので、style.cssにコードを入力します。<br>
+    CSSファイルにコードを新たに打ち込んだ場合、重複する部分は上書きされるのでそのまま追加しても良いそうですが、
+    今回はまるまる書き換えました！</p>
+    <p>↓↓その結果がこちら↓↓</p>
+
+    <img src="../images/post012/08.png" width="400">
+
+    <p>おお～～～。少しマシになったかな！<br>
+    今回のオシャレポイントはこちら。</p>
+
+    <img src="../images/post012/09.png" width="400">
+
+    <p>・bodyタグ内の、max-width: 800pxで行が長すぎてしまうことを防いでいます。<br>
+    ・line-height（行の高さ）を1.7にすることで、行間を空けて文字がすっきり見えるようにしています。<br>
+    　font-familyは柔らかめの現代風フォントだそうです！<br>
+    ・hoverエフェクトはマウスカーソルを合わせたときのエフェクトで、以前はオレンジに変化していましたが
+    　今回は色は変化せずアンダーバーが出るのみになりました。<br>
+    　ここは前のほうが良かったかな？<br>
+    ・.post-navは以前設定しましたね！</p>
+    <p>他にも気になる点で言えば、サイズを指定するときの単位にremが使われています。<br>
+    pxが絶対値で指定するのに対して、これは相対値で指定するものだそうです。<br>
+    そして1emで基準値と同じ値なので、3remは元のサイズの3倍だよ！ってことみたいです。</p>
+    <p>ホバー時のエフェクトを編集しましょう！style.cssを開いて</p>
+
+    <img src="../images/post012/10.png" width="400">
+
+    <p>a:hoverのcolor値を編集します。<br>
+    色のコードにカーソルを合わせるとパレット？が出てくるのがすごい便利！！</p>
+    
+    <img src="../images/post012/11.png" width="400">
+
+    <p>これでホバー時の挙動が戻りましたね！</p>
+    <p>あとはh1タグ（トップページでいうと一番上のおじめもブログ）の部分を目立たせたい！</p>
+
+    <img src="../images/post012/12.png" width="400">
+
+    <p>目立たせるには、フォントを大きく！色で印象づける！下にラインを引く！余白と中央ぞろえで整える！だそうです！</p>
+
+    <img src="../images/post012/13.png" width="400">
+
+    <ul>
+        <li>font-sizeを2.2→2.5remにサイズアップ</li>
+        <li>colorを<span style="color: #2c3e50;">落ち着いた濃い青に</span></li>
+        <li>margin-bottom→0.5→1remに。ボックス外側、下部分の余白を拡大</li>
+        <li>border-bottomで文字に太めの下線を引きます</li>
+        <li>※後に不要と判明します。displayでinline-blockを選ぶことで下線の長さをテキストの幅に合わせる</li>
+        <li>padding-bottomを0.5remにしてボックス内側、下部分の空白を追加。</li>
+    </ul>
+
+    <p>って感じみたいです！早速やってみましょう！</p>
+
+    <img src="../images/post012/14.png" width="400">
+
+    <p>ムムムッ！？中央揃えになってませんねぇ</p>
+
+    <img src="../images/post012/15.png" width="400">
+
+    <p>他のページは中央揃えになってるのに！<br>
+    原因をChat GPTに色々聞いてみたのですが、どうやらdisplay: inline-block;が原因みたいです。<br>
+    これを指定することにより要素自身の幅が狭まり、中央揃えにならない可能性があるようです。</p>
+
+    <img src="../images/post012/16.png" width="400">
+
+    <p>文字に合わせて下線を引くためにdisplayをinline-blockに設定しましたが、線を引くだけなら不要とのことなので消してみました。</p>
+
+    <img src="../images/post012/17.png" width="400">
+
+    <p>おおー！！！中央揃えになりました！下線の長さが文字に合わせた長さではなくなりましたが、このほうがマシですね！</p>
+    <p>あとは&lt;li>の書き方が以前と比べてわかりにくくなっています。</p>
+
+    <img src="../images/post012/18.png" width="400">
+
+    <p>こちらが以前のもので、</p>
+
+    <img src="../images/post012/19.png" width="400">
+
+    <p>新しいものがこちらで、他の文章と変化が無くなっています。これをわかりやすく変更します！<br>
+    原因は、リストの「・」が消えている。左の余白（インデント）が無くなっている。です。</p>
+
+    <img src="../images/post012/20.png" width="400">
+
+    <p>マークはつけずにデザインで区別する案もくれたのですが、今回はシンプルな方法を採用します！</p>
+
+    <img src="../images/post012/21.png" width="400">
+
+    <p>これで以前のようなリストになりました！更新履歴はこのままがいいのですが、<br>
+    方法3の見た目が少し気になりました。</p>
+
+    <img src="../images/post012/22.png" width="400">
+
+    <p>リンクをカード風に見せるとのことで、記事リスト向けだそうです！<br>
+    これを適用してみると、、、</p>
+
+    <img src="../images/post012/23.png" width="400">
+
+    <p>あらおしゃれ！！！これを記事一覧だけに適用させたいので、class名を追加します。</p>
+
+    <img src="../images/post012/24.png" width="400">
+
+    <p>ulリストにpost-listというクラス名を追加します。</p>
+
+    <img src="../images/post012/25.png" width="400">
+
+    <p>そしてstyle.cssにさきほど追加したコードに、.post-listを追加します。するとどうでしょう。</p>
+
+    <img src="../images/post012/26.png" width="400">
+
+    <p>記事一覧にだけ適用することができましたー！！<br>
+    以下ビフォーアフター。</p>
+
+    <img src="../images/post012/01.png" width="400">
+    <p>ビフォー。</p>
+
+    <img src="../images/post012/27.png" width="400">
+    <p>アフター。</p>
+    <p>とりあえず見た目は大丈夫そうかなぁ。。。</p>
+
+    <p>ということで一旦ここまでにしておきます！！！</p>
+
+
+    <div class="post-nav">
+       <a href="post011.html">← 第11回 アクセス解析をしよう！～Google Analytics～</a>
+    </div>
+    <p class="category">カテゴリ：<a href="../category/blog2.html">ブログ作成～公開後～</a></p>
+<p><a href="../index.html">←ブログ一覧に戻る</a></p>
+</body>
+</html>

@@ -1,51 +1,89 @@
-
-
+/* 全体のレイアウト */
 body {
-    font-family: sans-serif;
-    background-color: #f9f9f9;
-    padding: 20px;
-  }
-  h1 {
-    color: #333;
-  }
-  .post-list li {
-    margin: 10px 0;
-  }
-  a {
-    color: blue;
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-  
-  a:hover {
-    color: darkorange;
-    text-decoration: underline;
-  }
-  .category{
-    font-size: 0.9em;
-    color:#666;
-    margin-bottom: 1em;
-  }
-  .category a {
-    color: #0066cc;
-    text-decoration: none;
-  }
-  .post-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 2em;
-  padding-top: 1em;
-  border-top: 1px solid #ccc;
-  font-size: 1rem;
+  font-family: "Helvetica Neue", "Segoe UI", sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  line-height: 1.7;
 }
 
-.post-nav a {
+/* ヘッダー */
+h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  text-align: center;
+  margin: 1rem auto;
+  border-bottom: 3px solid #3498db;
+  padding-bottom: 0.5rem;
+  display: block; /* inline-block ではなく block にする */
+}
+
+p {
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+/* カテゴリ・記事リンク */
+ul {
+  list-style-type: disc;
+  padding-left: 1.2rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+a {
   color: #007acc;
   text-decoration: none;
-  transition: color 0.3s;
+  transition: color 0.2s;
 }
 
-.post-nav a:hover {
-  color: #005a99;
+a:hover {
+  color: #ff9100;
+  text-decoration: underline;
+}
+
+/* 区切り線 */
+hr {
+  margin: 2rem 0;
+  border: none;
+  border-top: 1px solid #ccc;
+}
+
+/* ナビゲーションリンク */
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ddd;
+}
+
+/* 更新履歴（オプション） */
+.update-history {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  margin-top: 2rem;
+  border-radius: 6px;
+}
+
+.post-list li a {
+  display: block;
+  padding: 1rem;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  color: #007acc;
+  text-decoration: none;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.post-list li a:hover {
+  background-color: #f0f8ff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }

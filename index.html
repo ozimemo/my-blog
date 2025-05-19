@@ -38,7 +38,28 @@
         <li><a href="posts/post006.html">第7回 ブログ更新を簡単にする。</a></li>
         <li><a href="posts/post008.html">第8回 Google検索でヒットするようにする。</a></li>
         <li><a href="posts/post009.html">第9回 ブログの回遊性を上げよう！</a></li>
+        <li><a href="posts/post010.html">第10回 第10回 更新履歴を表示しよう！～JavaScriptを添えて～</a></li>
         
     </ul>
+<script>
+  // update-log.htmlを読み込んで最新5件を表示
+  fetch('update-log.html')
+    .then(response => response.text())
+    .then(data => {
+      // 読み込んだHTML文字列をDOMとして扱う
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(data, 'text/html');
+
+      // IDがall-updatesのul要素を取得
+      const allUpdates = doc.getElementById('all-updates');
+      const latestUpdates = document.getElementById('latest-updates');
+
+      // 上から5つだけ取り出して、index.htmlに追加
+      const items = allUpdates.querySelectorAll('li');
+      for (let i = 0; i < 5 && i < items.length; i++) {
+        latestUpdates.appendChild(items[i].cloneNode(true));
+      }
+    });
+</script>
 </body>
 </html>

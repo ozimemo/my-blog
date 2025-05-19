@@ -69,6 +69,71 @@
 
     <img src="../images/post010/09.png" width="400">
 
+    <p>
+        <code>.then()</code> は、非同期処理の結果が返ってきたあとに「何をするか」を指定するメソッドです。<br>
+        たとえば <code>fetch()</code> を使うと、すぐに結果が返るわけではなく、<strong>Responseオブジェクトを返す Promise（約束）</strong> が返ってきます。<br>
+        「今はまだデータは無いけど、取れたら渡すよ」という約束です。<br>
+        この Promise に対して <code>.then()</code> を使うことで、<strong>結果が返ってきたときに行いたい処理</strong>を続けて書くことができます。<br>
+        これを宅配サービスに置き換えると、
+    </p>
+    <ul>
+        <li><code>fetch(私：荷物欲しいけどまだこないなー)</code></li>
+        <li><code>.then(宅配業者：荷物届いたら渡すわー！）</code></li>
+        <li><code>.then(私：届いたら開けてあれしよーっと！)</code></li>
+    </ul>
+    <p>ってことみたいです！</p>
+    <p>こんなかんじで一行ずつ細かく聞いてみると以下のようになりました。</p>
+    <code>fetch('update-log.html')</code>
+    <p>↑update-log.htmlというファイルを、サーバーに「ちょうだい」ってリクエストするよ！</p>
+    <code>.then(response => response.text())</code>
+    <p>↑サーバーから返ってきた「応答（response」を、テキスト（文字列）として読み取るよ！</p>
+    <code>    .then(data => {</code>
+    <p>↑テキストで受け取った内容を「data」という名前で扱うよ！</p>
+    <code>const parser = new DOMParser();</code>
+    <p>↑parserという変数に「文字列をHTMLとして読み取るツール(DOMParser)」を入れておくよ！</p>
+    <code>const doc = parser.parseFromString(data, 'text/html');</code>
+    <p>↑dataの中のHTML文字列を、「HTML構造(DOM)」として解析して、docに入れるよ！<br>
+    (第2引数'text/html'は「これはHTMLですよ」と教えるためのもの)</p>
+    <code>const allUpdates = doc.getElementById('all-updates');</code>
+    <p>↑読み込んだHTMLの中から、&lt;ul id="all-updates">を見つけてallUpdatesに入れるよ！<br>
+    all-apdatesというのはupdate-log.htmlで設定しましたね！</p>
+    <code>const latestUpdates = document.getElementById('latest-updates');</code>
+    <p>↑今表示しているページ(index.html)の中から&lt;ul id="latest-updates">を見つけて入れるよ！<br>
+    latest-upatesはindex.htmlに入力しましたね！そこに取得したデータを入れるよ！ってことです。</p>
+    <code>const items = allUpdates.querySelectorAll('li');</code>
+    <p>↑読み込んだHTMLの中の&lt;li>要素たちを全部集めてitemsに入れるよ！</p>
+    <code>for (let i = 0; i < 5 && i < items.length; i++) {</code>
+    <p>↑aitemsの中から、最大5個までループで取りだすよ！<br>
+    (もし5件より少なかったら、あるだけ処理するよ！)</p>
+    <code>latestUpdates.appendChild(items[i].cloneNode(true));</code>
+    <p>↑取りだした&lt;li>を複製(clone)して、今のページの&lt;ul id="latest-updates">に追加していくよ！</p>
+    <p>ということみたいです！何とか理解できたかな。。。？ま、使っていくうちに覚えるでしょう！<br>
+    なんとなく理解できたところでコードをindex.htmlのbodyの直前に入力します。</p>
+
+    <img src="../images/post010/11.png" width="400">
+
+    <p>するとどうでしょう、、、</p>
+
+    <img src="../images/post010/12.png" width="400">
+
+    <p>表示されましたー！！！</p>
+
+    <img src="../images/post010/13.png" width="400">
+
+    <p>過去の更新履歴もばっちりです！！！今入力されている更新履歴はChat GPTに出してもらった例文なので、正しいものに書き換えます。</p>
+
+    <img src="../images/post010/14.png" width="400">
+
+    <p>update-log.htmlを編集しました。すると～～～？</p>
+
+    <img src="../images/post010/15.png" width="400">
+
+    <p>トップページも自動的に更新されてます！！やったーーー成功！！！！！</p>
+    <p>今回のように細かく解説が必要な場面ではChat GPTが非常に有用だと感じました。<br>
+    動画やWEBで解説動画などを見ていて分からない箇所があったとき、いちいち別画面で検索して、出てきた動画なりWEBページから自分の必要な情報のある箇所を探して～という手間が省けます。<br>
+    手順を聞くチャット窓と細かく解説を頼む窓を分けるとより分かりやすいですね！</p>
+    <p>ということで今回はここまで！！！</p>
+
     
     
 

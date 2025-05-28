@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul class="auto-title-list">
+  <li><a data-autotitle href="../posts/post001.html"></a></li>
+  <li><a data-autotitle href="../posts/post002.html"></a></li>
+</ul>
+<p></p>
+<div class="post-nav" class="auto-title-list">
+       <p>←<a data-autotitle href="post012.html"></a></p>
+    </div>
+</body>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const links = document.querySelectorAll('a[data-autotitle]');
+  links.forEach(link => {
+    const url = link.getAttribute('href');
+    fetch(url)
+      .then(response => response.text())
+      .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const h1 = doc.querySelector('h1');
+        if (h1) {
+          link.textContent = h1.textContent;
+        } else {
+          link.textContent = '(タイトルなし)';
+        }
+      })
+      .catch(error => {
+        console.error('取得失敗:', error);
+        link.textContent = '(取得エラー)';
+      });
+  });
+});
+</script>
+
+</html>

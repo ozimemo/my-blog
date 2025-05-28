@@ -12,13 +12,13 @@
     gtag('config', 'G-BHFL8B352X');
   </script>
     <meta charset="UTF-8">
-    <meta name="description" content="CSSを編集してページ全体のレイアウトを整える方法をChat GPTに聞きながら実践します！">
+    <meta name="description" content="CSSを編集してページ全体のレイアウトを整える方法をChatGPTに聞きながら実践します！">
     <meta name="robots" content="index, follow">
     <title>CSSでページ全体のレイアウトを整えよう！</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <h1>第12回 CSSでページ全体を整えよう！</h1>
+    <h1>ブログ作成 第12回 <br>CSSでページ全体を整えよう！</h1>
     <p>投稿日：2025年5月20日</p>
 
     <p>12回目となる今回は、いよいよページ全体のレイアウトを整えていきます！！<br>
@@ -28,7 +28,7 @@
 
     <p>・・・はい・・・。殺風景ですねぇ。。。いかにも文字を羅列しただけのような見た目。<br>
     こんなんじゃ来てくれた方も即戻るボタンを押すことでしょう！<br>
-    とは言ったもののなにをどうしたらいいのかまったくわからないのでChat GPTに聞いてみましょう！</p>
+    とは言ったもののなにをどうしたらいいのかまったくわからないのでChatGPTに聞いてみましょう！</p>
 
     <img src="../images/post012/02.png" width="400">
 
@@ -102,7 +102,7 @@
     <img src="../images/post012/15.png" width="400">
 
     <p>他のページは中央揃えになってるのに！<br>
-    原因をChat GPTに色々聞いてみたのですが、どうやらdisplay: inline-block;が原因みたいです。<br>
+    原因をChatGPTに色々聞いてみたのですが、どうやらdisplay: inline-block;が原因みたいです。<br>
     これを指定することにより要素自身の幅が狭まり、中央揃えにならない可能性があるようです。</p>
 
     <img src="../images/post012/16.png" width="400">
@@ -163,11 +163,13 @@
 
     <p>ということで一旦ここまでにしておきます！！！</p>
 
+  <div class="post-nav" class="auto-title-list">
+    <p>←<a data-autotitle href="post011.html"></a></p>
+    <p><a data-autotitle href="post013.html"></a>→</p>
+  </div>
 
-    <div class="post-nav">
-       <a href="post011.html">← 第11回 アクセス解析をしよう！～Google Analytics～</a>
-    </div>
     <p class="category">カテゴリ：<a href="../category/blog2.html">ブログ作成～公開後～</a></p>
-<p><a href="../index.html">←ブログ一覧に戻る</a></p>
+  <p><a href="../index.html">←ブログ一覧に戻る</a></p>
+  <script src="../js/autoTitle.js" defer></script>
 </body>
 </html>

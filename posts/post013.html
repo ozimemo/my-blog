@@ -1,0 +1,286 @@
+<p class="category">カテゴリ：<a href="../category/blog2.html">ブログ作成～公開後～</a></p>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BHFL8B352X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-BHFL8B352X');
+  </script>
+    <meta charset="UTF-8">
+    <meta name="description" content="JavaScriptを使用して、リンク先のtitleやh1などの要素からテキスト情報を取得し、リンクテキストに挿入する方法をChatGPTに聞いてみました！">
+    <meta name="robots" content="index, follow">
+    <title>リンク先のテキストを取得しよう！</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>ブログ作成 第13回<br>リンク先のテキストを取得しよう！</h1>
+    <p>投稿日：2025年5月28日</p>
+    <p>13回目となる今回は、JavaScriptを活用してリンクを貼る際にリンク先の特定のタグ(今回は&lt;h1>)からテキスト情報を取得し、リンクテキストに自動的に入力されるようにします！</p>
+    <p>※セキュリティ制限(CORS)のため、同一ドメイン(自分のブログ内のHTML)からしか取得できません。</p>
+    <h2>現在の問題点</h2>
+    <p>現状はページ下部の前の記事次の記事、トップページの記事一覧などの各リンクテキストは全て記事タイトル等を確認しながら手入力しています。<br>
+    1記事増えるたびに次の記事、記事一覧、更新履歴、カテゴリ一覧の項目にリンクを追加し、テキストを入力したものをコピーしています。<br>
+    </p>
+
+    <img src="../images/post013/01.png" width="400">
+
+    <p>トップページの記事一覧。この作業のリンクテキストの入力が無くなるだけで楽になりますよね！<br>
+    <a href="post010.html">第10回</a>ではトップページでのみ使用するJavaScriptだったのでページの中にコードを書きましたが、今回のコードは全記事に貼り付けるため、.jsファイルを作成してそれを読み込むようにします。</p>
+
+    <h2>導入方法をChatGPTに聞く</h2>
+
+    <p>やりたいことが決まったので、どうすれば導入できるかChatGPTに聞いてみます！</p>
+
+    <img src="../images/post013/02.png" width="400">
+
+    <p>JavaScript(+fetch API)で導入できるみたいです！<br>
+    セキュリティ制限のため、自分のブログ内のファイルにしかアクセスできないので注意です！</p>
+
+    <h3>fetch APIとは</h3>
+
+    <p>fetchは<a href="../posts/post012.html">第10回</a>で出てきた、指定のデータにアクセスするメソッドですね！<br>
+    前回はHTMLにアクセスしましたが今回はURLにアクセスします。</p>
+    <p>APIとはApplication Programing Interfaceの略で、<br>
+    アプリが別のサービスと会話するための窓口です。<br>
+    よく使われる例としては天気APIで今日の天気を取得したり、Google Maps APIで地図を表示したり、<br>
+    現在位置を取得したりするのに使われているようです。<br>
+    </p>
+
+    <img src="../images/post013/03.png" width="400">
+
+    <p>fetch APIについてChatGPTに質問したときに、図解でも紹介できますよ！<br>
+    とのことだったので作ってもらいました。優秀すぎる！！！</p>
+
+    <h2>HTMLコードの解説</h2>
+
+    <p>では実際にどのようなコードを使用するのか見てみましょう！</p>
+
+    <img src="../images/post013/04.png" width="400">
+
+    <p>まずは本文に貼るリンクに属性を付与します。<br>
+    &lt;ul>タグにclass=auto-title-listを付与し、&lt;li>タグのリンクにdata-autotitleを付与します。</p>
+
+    <h3>classとdataの違い（属性）</h3>
+    <p>classはCSSを適用させるときに属性の指定に使いました。<br>
+    ではdata-〇〇とは何なのでしょうか！ChatGPTに聞いてみました。</p>
+
+    <img src="../images/post013/05.png" width="400">
+
+    <p>結論から言うとclassはCSSでスタイルを当てるために使う。<br>
+    data-〇〇はJavaScriptにデータを渡すために使うものです。</p>
+
+    <h2>JavaScriptのコードの解説</h2>
+
+    <p>次はHTMLの最後などに追加するJavaScriptのコードを見てみましょう。</p>
+
+    <img src="../images/post013/06.png" width="400">
+
+    <p>では1行ずつ解説します。by ChatGPTに聞いた</p>
+
+    <p><code>document.addEventListener('DOMContentLoaded', () => {</code><br>
+    <ul>
+      <li>documentは「今表示されているウェブページ全体のHTML構造」を意味します。</li>
+      <li>addEventListenerは「何かが起きたときに、処理を実行する」関数です。</li>
+      <li>'DOMContentLoaded'は「ページのHTMLが読み終わったタイミング」を意味します。</li>
+      <li>() => { ... }は「そのときに行う処理」のかたまり（アロー関数）です。</li>
+    </ul>
+    まとめると、ページのHTMLが読み込まれたら、中の処理を実行する準備をしているということです。</p>
+
+    <p><code>const links = document.querySelectorAll('a[data-autotitle]');</code><br>
+    <ul>
+      <li>const links は「linksという変数を作るよ」という意味。</li>
+      <li>document.querySelectorAll(...) は、ページの中から特定の要素を全部探す命令です。</li>
+      <li>'a[data-autotitle]' は、&lt;a data-autotitle> という属性を持ったリンクを探します。</li>
+    </ul>
+    要約すると、a data-autotitleという属性を持ったリンクをページの中から全部探す命令のことを、linksって言うことにするよ！ってことです。<br>
+    属性a data-autotitleは上のHTMLに貼るコードの時に作りましたね！<br>
+    自動でタイトルを取得したいリンクをまとめて取得します。</p>
+
+    <p><code>links.forEach(link => {</code>
+    <ul>
+      <li>linksは上で作った変数です。</li>
+      <li>forEach は「リンク一つ一つに対して順番に処理する」ための命令です。</li>
+      <li>link => { ... } で、個々のリンクについて行う処理をまとめています。</li>
+    </ul>
+    取得したリンクたちに、ひとつずつ処理をしていく命令です。</p>
+
+    <p><code>const url = link.getAttribute('href');</code>
+    <ul>
+      <li>link.getAttribute('href') は、そのリンクが指しているURL（ファイルの場所）を取得します。</li>
+      <li>たとえば &lt;a href="posts/post1.html"> なら "posts/post1.html" という文字列になります。</li>
+    </ul>
+    どのHTMLファイルを読み込めばいいか確認するコードで、link要素からhref属性を取りだす事をurlって呼ぶことにするよ！ってことです。</p>
+
+    <p><code>fetch(url)</code>
+    <ul>
+      <li>fetch() は、URLの先にあるファイルの中身を読み込む命令です。</li>
+      <li>この時点では「読み込みを始めた」だけで、完了はしていません。</li>
+    </ul>
+    (url)とは、上で定義した変数「url」のことで、url には href の文字列（例: "posts/post1.html"）が入っていて、fetch(url) はそれを読み込むよ！という意味です。</p>
+
+    <p><code> .then(response => response.text())</code>
+    <ul>
+      <li>.then() は「時間がかかる処理（読み込み）が終わったあとに、次の処理を続けて実行するよ」という仕組みです。</li>
+      <li>response.text() は、取得したファイルを「ただのテキスト（HTML）」として読み込む命令です。</li>
+    </ul>
+    HTML全体のテキストを取りだします。</p>
+
+    <p><code>.then(html => {</code>
+    <ul>
+      <li>前の行で取り出したHTMLテキストを、html という変数で受け取ります。</li>
+      <li>このブロックで次の処理を実行します。</li>
+    </ul></p>
+
+    <p><code>const parser = new DOMParser();</code>
+    <ul>
+      <li>DOMParser は、HTML文字列を「実際のHTML構造」として読み込める特別な機能です。</li>
+      <li>new DOMParser() でその機能を使えるようにします。</li>
+    </ul>
+    HTMLの文字列を「タグごとに」扱えるようにします。</p>
+
+    <p><code>const doc = parser.parseFromString(html, 'text/html');</code>
+    <ul>
+      <li>parser.parseFromString(...) は、HTML文字列を仮想のHTMLドキュメントとして読み込む命令です。</li>
+      <li>'text/html' は「これはHTMLですよ」と教えています。</li>
+    </ul>
+    取得したHTMLをちゃんと解析できる形に変換しています。</p>
+
+    <p><code>const title = doc.querySelector('title');</code>
+    <ul>
+      <li>doc.querySelector('title') は、取得したHTMLの中から &lt;title> タグを探しています。</li>
+    </ul>
+    HTMLのタイトル部分を取得しています。この処理をtitleと呼ぶことにするよ！ってことです。</p>
+
+    <p><code>if (title) {</code>
+    <ul>
+      <li>if は「もし～なら」という条件です。</li>
+      <li>title(前の行で定義した、タイトルを取得する処理)が見つかった（＝存在する）場合だけ処理を続けます。</li>
+    </ul></p>
+
+    <p><code>link.textContent = title.textContent;</code>
+    <ul>
+      <li>link.textContent は、リンクの表示されている文字を意味します。</li>
+      <li>title.textContent は、タイトルタグの中に書いてある文字です。</li>
+    </ul>
+    リンク要素に表示されている文字を、タイトル要素の中に書いてある文字にするよ！ってことです。</p>
+
+    <p><code>} else {<br>
+    link.textContent = '(タイトルなし)';<br>
+    }</code>
+    <ul>
+      <li>title がなかったときは「(タイトルなし)」と表示する処理です。</li>
+    </ul>
+    elseは「それ以外」という意味なので、見つからなかった場合の処理です。</p>
+
+    <p><code>})<br>
+    .catch(error => {<br>
+    console.error('取得失敗:', error);<br>
+    link.textContent = '(取得エラー)';<br>
+    });</code>
+    <ul>
+      <li>.catch(...) は「エラーが起きたときの処理」です。</li>
+      <li>console.error(...) で開発者向けにエラー内容を表示します。</li>
+      <li>リンクの表示は「取得エラー」とします。</li>
+    </ul>
+    エラーがでた際にブラウザの開発者ツール(Windowsの場合はF12キー)のコンソールに赤い文字でエラー内容がでるようにするコードのようです。<br>
+    今のところはこの程度の認識で次に進みます！</p>
+
+    <p>ということでコードを一通り理解した(つもりな)ので次は.jsファイルを作成しましょう！</p>
+
+    <h2>.jsファイルを作成する</h2>
+
+    <p>ブログプロジェクトにjsフォルダを作成し、autoTitle.jsファイルを新しく作ります。</p>
+
+    <img src="../images/post013/08.png" width="400">
+
+    <p>そのファイルにJavaScriptコードを貼り付けます。</p>
+
+    <img src="../images/post013/09.png" width="400">
+
+    <p>これで準備完了です！！</p>
+
+    <h2>実際にコードを貼り付けてみる</h2>
+    
+    <p><a href="post012.html">前回の記事</a>にHTMLコードを貼り付けてみましょう。</p>
+
+    <img src="../images/post013/07.png" width="400">
+
+    <p>ページの一番下に配置しました。<br>
+    この段階ではリンク先のテキストを入れ込む箱を作っただけです。<br>
+    どうなっているかというと</p>
+
+    <img src="../images/post013/10.png" width="400">
+
+    <p>無。なにも無い。ここにテキストを入れるためのJavaScriptを読み込むコードを貼りましょう。<br>
+    &lt;script src="js/autoTitle.js" defer></script></code>を&lt;/body>タグの直前に貼り付けます。</p>
+
+    <img src="../images/post013/11.png" width="400">
+
+    <p>&lt;/body>タグの直前に置きました！jsファイルのパスを正しく指定しなおしました。</p>
+
+    <img src="../images/post013/12.png" width="400">
+
+    <p>するとどうでしょう。。。無事リンク先のタイトルを勝手に取得してきましたね！<br>
+    あとはスタイルを適用させるためにpost-nav属性を付与して</p>
+
+    <img src="../images/post013/13.png" width="400">
+
+    <p>ついでにリンクを&lt;p>タグで囲んで、前の記事は←、次の記事は→矢印を付け足します。</p>
+
+    <img src="../images/post013/14.png" width="400">
+
+    <p>うまくいきました～～～！！！これでいちいちタイトルを手入力しなくて済みますね～</p>
+
+    <p>トップページにも適用したいのですが、こちらは第〇回も表示してほしいので、見出し1である&lt;h1>を取得する.jsファイルを作ります。<br>
+    作り方は簡単。jsフォルダにautoh1.jsファイルを作成してautoTitleの中身をコピー。</p>
+
+    <img src="../images/post013/19.png" width="400">
+
+    <p>赤枠部分を選択し、titleをh1に書き換えます。</p>
+
+    <img src="../images/post013/20.png" width="400">
+
+    <p>JavaScriptを読み込む際にautoh1.jsを指定します。</p>
+
+    <img src="../images/post013/21.png" width="400">
+
+    <p>リンクのタグを書き換えて、テキストを消します（消さなくても問題なかったですが一応。）</p>
+
+    <img src="../images/post013/18.png" width="400">
+
+    <p>↓↓↓　　　↓↓↓</p>
+
+    <img src="../images/post013/22.png" width="400">
+
+    <p>するとどうでしょう。</p>
+    
+    <img src="../images/post013/23.png" width="400">
+
+    <p>トップページには見出し1を取得し、ブログ作成　第〇回まで含んだものが表示されています！！！<br>
+    成功～～～～！！！！！<br>
+    今回のように複数ページにJavascriptを使用する場合や、編集したいときなどはページに書き込むのではなく、.jsファイルを作成すると編集が楽ですね！</p>
+
+    
+
+
+
+
+
+    <p>ということで今回はここまで！</p>
+
+    
+  <div class="post-nav" class="auto-title-list">
+    <p>←<a data-autotitle href="post012.html"></a></p>
+    <!--<p><a data-autotitle href="post014.html"></a>→</p>!-->
+  </div>
+
+    <p class="category">カテゴリ：<a href="../category/blog2.html">ブログ作成～公開後～</a></p>
+  <p><a href="../index.html">←ブログ一覧に戻る</a></p>
+  <script src="../js/autoTitle.js" defer></script>
+</body>
+</html>

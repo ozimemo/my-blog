@@ -1,0 +1,105 @@
+<p class="category">カテゴリ：<a href="../category/blog2.html">ブログ作成～公開後～</a></p>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BHFL8B352X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-BHFL8B352X');
+  </script>
+    <meta charset="UTF-8">
+    <meta name="description" content="概要">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <title>クラウドベースのVSCode環境（Web版）で外出先でも編集できるようにしよう！</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>ブログ作成 第14回<br>
+        クラウドベースのVSCode環境（Web版）で外出先でも編集できるようにしよう！</h1>
+    <p>投稿日：</p>
+
+    <p>今回はクラウドベースのVSCode環境（Web版）を利用して、公開ページに反映されない環境で自宅と外出先での編集状況を共有できるようにします！</p>
+
+    <h2>現在の問題点</h2>
+    <ul>
+        <li>ローカルディレクトリで作業しているので外出先でファイルを編集できない</li>
+        <li>外出先ではプログラムのインストールやクラウドにアップロードしたファイルのダウンロードなどに制限がある可能性がある</li>
+        <li>GitHub Pagesで編集したファイルを共有する場合は公開ページにも反映されてしまう</li>
+    </ul>
+
+    <h2>ChatGPTに対応策を聞く</h2>
+
+    <p>以上の問題点をChatGPTに伝えて、対応策を聞いてみましょう！</p>
+
+    <img src="../images/post014/01.png" width="400">
+
+    <p>こちらからの条件をまとめてくれました！<br>
+    外出先でプログラムのインストールができればファイル共有アプリ（Googleドライブなど）を使ってクラウド上のフォルダで作業すればできると思います！<br>
+    公開ページに反映される問題点を伝えていなかったので追加で質問します</p>
+
+    <img src="../images/post014/02.png" width="400">
+
+    <p>編集途中のファイルを公開ページに反映させずに共有するには、ブランチというものを分けて作業すればいいみたいです。<br>
+    <a href="../posts/post006.html">第6回 ブログを公開しよう！</a>で設定した↓↓↓</p>
+
+    <img src="../images/post014/03.png" width="400">
+
+    <p>赤枠部分のBranch:mainの事ですね！そもそもブランチは何やねんて話なので聞いてみます</p>
+
+    <h3>Gitにおけるブランチ(Branch)とは</h3>
+
+    <img src="../images/post014/04.png" width="400">
+
+    <p>GitHub Pagesの「ブランチ」とは、Gitで管理される“作業の分岐点”のようなもので、特定のブランチを選んでWebサイトとして公開するしくみです。<br>
+    当ブログで言えばmainブランチを公開用としているので、testやdevなどのブランチ（分岐点）を作成してそこで編集すれば公開ページ(main)に反映させずに編集内容を保存して共有することができます。</p>
+
+    <h2>自宅での準備</h2>
+    
+    <img src="../images/post014/05.png" width="400">
+
+    <p>自宅での準備は終わっているので、手順を知りたい方は<a href="../posts/post006.html">第6回 ブログを公開しよう！</a>を参照してください。</p>
+
+    <h2>外出先での準備</h2>
+
+    <p>https://vscode.dev/github/ユーザー名/リポジトリ名/tree/devにアクセスします。<br>
+    すると、ブラウザで以下のようなページが開きます。</p>
+
+    <img src="../images/post014/07.png" width="400">
+
+    <p>左下のmainと書かれている箇所をクリックすると上に新しいブランチを作成する項目が出てきます。<br>
+    そこにdevブランチと入力して作成しましょう！</p>
+
+    <img src="../images/post014/08.png" width="400">
+
+    <p>すると作業環境がdevブランチになります。ここで作業すれば公開用のmeinブランチに影響を与えずに編集内容を共有できます！</p>
+
+    <img src="../images/post014/09.png" width="400">
+
+    <p>画像をアップロードする際は、左のエクスプローラーにファイルをドラッグすればアップロードされます。</p>
+
+    <img src="../images/post014/10.png" width="400">
+    <img src="../images/post014/11.png" width="400">
+
+    <p>実際に使えるか見てみたかったのですが、LiveServerはWeb版のVSCodeでは利用できず、他の方法だと公開用のブランチを変更したりする必要があるみたいです。<br>
+    なので外出先でどの程度作業するかによりますが、プレビューはローカル環境で確認したほうが効率が良さそうです。</p>
+
+    <p>ということで今回はここまで！</p>
+    
+
+
+
+  <div class="post-nav" class="auto-title-list">
+    <p>←<a data-autotitle href="post013.html"></a></p>
+    <!--<p><a data-autotitle href="post015.html"></a>→</p>!-->
+  </div>
+
+    <p class="category">カテゴリ：<a href="../category/blog2.html">ブログ作成～公開後～</a></p>
+  <p><a href="../index.html">←ブログ一覧に戻る</a></p>
+  <script src="../js/autoTitle.js" defer></script>
+</body>
+</html>
